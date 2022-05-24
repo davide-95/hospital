@@ -9,6 +9,9 @@ class Doctor(Person):
         self.doctorId = doctorId
         self.lista_pazienti = {}
 
+    def __repr__(self):
+       return "il nome del dottore è " + self.name + " " + "il cognome è " + self.surname + ", il codice identificativo del dottore è " + self.doctorId
+
 
     def getDoctorId(self):
         return self.doctorId

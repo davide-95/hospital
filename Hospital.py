@@ -13,37 +13,23 @@ class Hospital:
             self.lista_pazienti[personId] = person
 
     def addDoctor(self, name, surname, personId, doctorId):
-        doctor = Doctor(name, surname, personId, doctorId)
-        if personId in self.lista_pazienti:
-            if doctorId not in self.lista_dottori:
+                doctor = Doctor(name, surname, personId, doctorId)
                 self.lista_dottori[doctorId] = doctor
 
 
     ## Person not present exception
     def getPerson(self, personId):
-        for person in self.lista_pazienti:
-            if personId == person:
-                return self.lista_pazienti
-            else:
-                raise Exception("Paziente non trovato")
+        return self.lista_pazienti[personId]
 
     ## Doctor not present exception
     def getDoctor(self, doctorId):
-        for doctor in self.lista_dottori:
-            if doctorId == doctor:
-                return self.lista_dottori
-            else:
-                raise Exception("Dottore non trovato")
+        return self.lista_dottori[doctorId]
 
 
     def assignDoctor(self, doctorId, personId):
-        for persona in self.lista_pazienti:
-            if personId == persona:
-                for dottore in self.lista_dottori:
-                    if doctorId == dottore:
-                        self.lista_pazienti[persona].setDoctor(dottore)
-                        self.lista_dottori[dottore].addPatient(self.lista_pazienti[persona])
-                        break
+        self.lista_pazienti[personId].setDoctor(doctorId)
+        self.lista_dottori[doctorId].addPatient(self.lista_pazienti[personId])
+
 
 
 
